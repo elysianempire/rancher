@@ -1,0 +1,14 @@
+rancher-data:
+  container_name: rancher-data
+  image: rancher/os:v0.4.3
+  volumes:
+    - /var/lib/mysql
+rancher-server:
+  container_name: rancher-server
+  image: rancher/server
+  volumes_from:
+    - rancher-data
+  ports:
+    - "80:8080"
+  expose:
+    - "8080"
